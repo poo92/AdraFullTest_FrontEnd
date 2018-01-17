@@ -1,0 +1,36 @@
+<template>
+<div class="container col-sm-6 col-sm-offset-3 ">
+    <div class="panel panel-default">
+        <div class="panel-heading text-center panel-header-main"> Login  </div>
+
+        <div class="panel-body">
+
+            <form name="login">
+                <div class="row">
+                    <br />
+                    <div class="form-group">
+                        <label class="col-sm-3 col-sm-offset-1 text-right" for="username">Username <span class="required">*</span></label>
+                        <input class="form-control col-sm-2" type="text" name="username" id="username" required/>
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="row">
+                    <div class="form-group">
+                        <label for="password" class="col-sm-3 col-sm-offset-1 text-right">Password <span class="required">*</span></label>
+                        <input class="form-control col-sm-2" type="password" name="password" id="password"  required/>
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="row">
+                    <div class="form-group">
+                        <button class="btn btn-primary col-sm-2 col-sm-offset-5" type="submit" click.delegate="login()" >Login</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </template>

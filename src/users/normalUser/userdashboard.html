@@ -1,0 +1,71 @@
+<template>        
+    <div style="height:5px"></div>
+
+
+<div class="container">
+    <div class="row">
+        <button class="btn btn-primary col-sm-offset-11 col-sm-1" id="logout" ng-click="Logout()"> Logout </button>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <h2 class="col-sm-12">User Dashboard</h2>
+</div>
+<br />
+
+<div class="container">
+    <div class="row">
+
+
+        <div class="col-sm-10 col-sm-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="font-weight:bold">View Current Account Balances</div>
+                <div class="panel-body">
+                    <form name="viewCurrentBalance">
+                        <div class="form-group">
+                            <label class="col-sm-2 text-right" for="year">Account Type <span class="required">*</span></label>
+                            <select class="form-control col-sm-2" name="accountType" id="accountType" ng-model="accountType" required>
+                                <option disabled selected value> -- select Account Type-- </option>
+                                <option value="rnd">R&D</option>
+                                <option value="canteen">Canteen</option>
+                                <option value="ceocar">CEO's Car</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="parking">Parking</option>
+                            </select>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <button class="btn btn-primary col-sm-1 col-sm-offset-9" type="submit" ng-click="ViewCurrentBalance()" ng-disabled="!accountType || accountType.length == 0 "> View</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-10 col-sm-offset-1" ng-show="isVisibleCurrentBalancePanel">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="font-weight:bold">Current Balance of  {{ acountType }} Account </div>
+                <div class="panel-body">
+                    <form name="viewCurrentBalance">
+                        <div class="form-group">
+                            <label class="col-sm-2 text-right" for="year">Balance </label>
+                            <label class="col-sm-2 text-right" for="year">Rs. {{ currentBalance }} </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+</div>
+
+</template>
