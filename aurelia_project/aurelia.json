@@ -65,6 +65,9 @@
           "aurelia-templating",
           "aurelia-templating-binding",
           "jquery",
+          "extend",
+          "array-equal",
+          "typer",
           {
             "name": "bootstrap",
             "path": "../node_modules/bootstrap/dist",
@@ -90,6 +93,19 @@
             "path": "../node_modules/aurelia-testing/dist/amd",
             "main": "aurelia-testing",
             "env": "dev"
+          },
+          {
+            "name": "aurelia-form-validation",
+            "path": "../node_modules/aurelia-form-validation/dist/amd",
+            "main": "aurelia-form-validation"
+          },
+          {
+            "name": "aurelia-charts",
+            "path": "../node_modules/aurelia-charts/dist/amd",
+            "main": "aurelia-charts",
+            "resources": [
+              "component/chart-element.html"              
+            ]
           },
           "text"
         ]

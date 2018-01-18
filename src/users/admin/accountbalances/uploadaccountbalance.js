@@ -1,33 +1,46 @@
+import {inject} from 'aurelia-framework';
+import{Router} from 'aurelia-router';
+import {HttpClient, json} from 'aurelia-fetch-client';
 
+let httpClient = new HttpClient();
 export class UploadAccountBalance{
+    static inject() { return [Router]; }
 
+    constructor(router) {  
+       this.router = router;  
+       this.filecontent="";  
+       this.year =2017;
+      }
 
     fileSelected() {
+        
         var file = document.getElementById("file").files[0];
         if (file) {
         var reader = new FileReader();
         reader.readAsText(file, "UTF-8");
         reader.onload = function (evt) {
             console.log(evt.target.result);
-            var userRequest = '{year:"' + year + '",fileContent: "' + evt.target.result + '"}';
-            // call controller method
-            $http({
-                method: "POST",
-                url: "/api/AccountBalance/UploadBalance",
-                dataType: 'json',
-                data: userRequest,
-                headers: { "Content-Type": "application/json" }
-            }).then(function OnSuccess(response) {
-                $window.alert(response.data);
-                $window.location.href = "#!AdminDashboard/";
-
-            }, function OnError(Error) {
-                console.log(Error)
-            })
-        }
+            this.filecontent = evt.target.result;
+        }.bind(this)
         reader.onerror = function (evt) {
-            $window.alert("An error occured while reading file. Please try again later.");
+           alert("An error occured while reading file. Please try again later.");
         }
     }
+    
+}
+
+upload(){
+        
+    var userRequest = {"year": this.year,"fileContent":this.filecontent };           
+            httpClient.fetch('http://localhost:58967/api/AccountBalance/UploadBalance',
+            {
+                method: "POST",
+                body: json(userRequest)                 
+             })
+             .then(response => response.json())
+             .then(data => {   
+                 alert(data);   
+                 this.router.navigate('admindashboard');                                                                     
+             });
 }
 }

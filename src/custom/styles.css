@@ -61,3 +61,25 @@ li.list-group-item.active > a {
 
 .panel-header-normal{
   font-weight:600;
+}
+  .modalViewBalanceChartCenter {
+    position: absolute;
+    left: 50%;
+    top: 52%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .modalViewBalanceCenter {
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, -50%);
+  }
+  
+  
+  .modalDeletePopup {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }

@@ -1,60 +1,66 @@
 <template>
     
-<div class="container col-sm-10 col-sm-offset-1 ">
+<div class="container col-sm-8 col-sm-offset-2">
     <div class="panel panel-default">
         <div class="panel-heading panel-header-normal"> Upload Account Balance  </div>
 
         <div class="panel-body">
-            <form name="viewBalanceChart">
+            <form name="viewBalanceChart" class="form-inline">
                 <div class="row">
-                    <div class="form-group">
-                        <label class="col-sm-1" for="year">start Year</label>
-                        <input class="form-control col-sm-2" type="number" name="startYear" id="startYear"  min="2016" placeholder="2016"  />
+                        <label class="col-sm-2 text-right" for="year">Start Year</label>
+                        <input class="form-control col-sm-2" type="number" name="startYear" id="startYear"  min="2016" placeholder="2016" value.bind="startYear" />
 
-                        <label for="month" class="col-sm-1 col-sm-offset-1">Start Month</label>
-                        <select class="form-control col-sm-2" name="startMonth" id="startMonth"  month-options></select>
+                        <label for="month" class="col-sm-2 col-sm-offset-1 text-right">Start Month</label>
+                        <select value.bind="startMonth" class="form-control col-sm-4" class="form-control col-sm-2">
+                            <option  model.bind="null">Choose a month</option>
+                            <option repeat.for="month of months"
+                                    model.bind="month.id">
+                              ${month.name}
+                            </option>
+                          </select>
 
-                    </div>
+                   
                 </div>
 
                 <br />
 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="form-group">
                         <p class="col-sm-3 col-sm-offset-1 required" >Please enter a valid year</p>
                         <p class="col-sm-3 col-sm-offset-5 required" >Please enter a valid month</p>
                     </div>
-                </div>
+                </div> -->
 
                 <br />
 
                 <div class="row">
-                    <div class="form-group">
-                        <label class="col-sm-1" for="year">End Year</label>
-                        <input class="form-control col-sm-2" type="number" name="endYear" id="endYear"   min="2016" placeholder="2016"  />
+                    <label class="col-sm-2 text-right" for="year">End Year</label>
+                    <input class="form-control col-sm-2" type="number" name="endYear" id="endYear"  min="2016" placeholder="2016" value.bind="endYear" />
 
-                        <label for="month" class="col-sm-1 col-sm-offset-1">End Month</label>
-                        <select class="form-control col-sm-2" name="endMonth" id="endMonth"  month-options></select>
-
-                    </div>
+                    <label for="month" class="col-sm-2 col-sm-offset-1 text-right">End Month</label>
+                    <select value.bind="endMonth" class="form-control col-sm-4" class="form-control col-sm-2">
+                        <option  model.bind="null">Choose a month</option>
+                        <option repeat.for="month of months"
+                                model.bind="month.id">
+                          ${month.name}
+                        </option>
+                      </select>
                 </div>
 
                 <br />
 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="form-group">
                         <p class="col-sm-3 col-sm-offset-1 required" >Please enter a valid year</p>
                         <p class="col-sm-3 col-sm-offset-5 required" >Please enter a valid month</p>
                     </div>
-                </div>
+                </div> -->
 
                 <br />
 
 
-                <div class="row">
-                    <div class="form-group">
-                        <button class="btn btn-primary col-sm-1 col-sm-offset-9" type="submit" > View </button>
-                    </div>
+                <div class="row">                    
+                        <button class="btn btn-primary col-sm-2 col-sm-offset-9" type="submit" click.delegate="view()"> View </button>
                 </div>
 
             </form>
@@ -65,7 +71,7 @@
 
 
 
-<div  class="modal-content col-sm-10 modalViewBalanceChartCenter">
+<div if.bind="showmodal" class="modal-content col-sm-10 modalViewBalanceChartCenter">
     <div id="chartContainer" class="modal-body">
     </div>
     <div class="modal-footer">
