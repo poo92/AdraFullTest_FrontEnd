@@ -16,6 +16,8 @@
     "aurelia-router": "^1.5.0",
     "bluebird": "^3.4.1",
     "bootstrap": "^3.3.7",
+    "c3": "^0.4.18",
+    "d3": "^4.12.2",
     "jquery": "^2.2.4",
     "requirejs": "^2.3.2",
     "text": "github:requirejs/text#latest"

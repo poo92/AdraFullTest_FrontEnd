@@ -1,6 +1,8 @@
 import {inject} from 'aurelia-framework';
 import{Router} from 'aurelia-router';
 import {HttpClient, json} from 'aurelia-fetch-client';
+import {logger, chart, Chart} from 'aurelia-charts';
+import * as d3 from 'd3';
 
 let httpClient = new HttpClient();
 export class ViewAccountBalanceSummary{
@@ -41,14 +43,14 @@ export class ViewAccountBalanceSummary{
              .then(response => response.json())
              .then(data => {  
                  console.log(data);
-                //  if(data.year==0){
-                //   alert("No account balances are available for this month");
-                //   this.router.navigate('admindashboard');
-                //  }else{
-                //   this.accountBalance = data;
-                //   this.accountBalance.month = this.monthsArray[data.month - 1];
-                //   this.showmodal =true;
-                //  }
+                 if(data.length==0){
+                    alert("No account balances are available for this time period");
+                  this.router.navigate('admindashboard');
+                 }else{
+                  this.accountBalance = data;
+                  this.accountBalance.month = this.monthsArray[data.month - 1];
+                  this.showmodal =true;
+                 }
                  
              });
         }
@@ -57,4 +59,6 @@ export class ViewAccountBalanceSummary{
             this.router.navigate('admindashboard');                                                                     
   
         }
+
+        
 }
