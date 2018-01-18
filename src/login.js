@@ -17,21 +17,21 @@ export class Login {
 
 login (){
   var year =2017; var month=1;
-    var UserRequest = {"year":2017,"month":1};
-      httpClient.fetch('http://localhost:58967/api/AccountBalance/ViewBalance',
-      {
-          method: "POST",
-          body: json(UserRequest)
+    // var UserRequest = {"year":2016,"month":1};
+    //   httpClient.fetch('http://localhost:58967/api/AccountBalance/ViewBalance',
+    //   {
+    //       method: "POST",
+    //       body: json(UserRequest)
                    
-      })
-      .then(response => response.json())
-      .then(data => {     
-            console.log(data);           
-          // this.accountBalance = data[0];                         
-      });
+    //   })
+    //   .then(response => response.json())
+    //   .then(data => {     
+    //         console.log(data);           
+    //       // this.accountBalance = data[0];                         
+    //   });
       
     
-    this.router.navigate('userdashboard')
+    this.router.navigate('admindashboard')
 }
 
   // created() {
