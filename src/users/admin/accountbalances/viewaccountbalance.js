@@ -30,8 +30,12 @@ export class ViewAccountBalance{
         { id: 12, name: 'December' },
       ];
 
-      view() {                   
-          var userRequest = {"year": this.year,"month":this.month };           
+      view() {         
+          console.log(this.month);    
+          if(this.month == null){
+            alert("Please select a month");
+          }  else{
+            var userRequest = {"year": this.year,"month":this.month };           
           httpClient.fetch('http://adratest.azurewebsites.net/api/AccountBalance/ViewBalance',
           {
               method: "POST",
@@ -49,6 +53,8 @@ export class ViewAccountBalance{
                }
                
            });
+          }    
+          
       }
       HandleViewBalanceModal(){
           this.showmodal =false;

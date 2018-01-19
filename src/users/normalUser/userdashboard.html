@@ -27,7 +27,7 @@
                         <div class="row">
                             <label class="col-sm-3 text-right" for="year">Account Type <span class="required">*</span></label>
                             <select class="form-control col-sm-4" name="accountType" id="accountType" value.bind="accountType" required>
-                                <option disabled selected value> -- select Account Type-- </option>
+                                <option value="none" selected> -- select Account Type-- </option>
                                 <option value="rnd">R&D</option>
                                 <option value="canteen">Canteen</option>
                                 <option value="ceocar">CEO's Car</option>
@@ -47,14 +47,14 @@
             </div>
         </div>
 
-        <div class="col-sm-10 col-sm-offset-1" if.bind="showpanel">
+        <div class="col-sm-10 col-sm-offset-1" if.bind="showmodal">
             <div class="panel panel-default">
-                <div class="panel-heading" style="font-weight:bold">Current Balance of  {{ acountType }} Account </div>
+                <div class="panel-heading" style="font-weight:bold">Current Balance of  ${ accountType } Account </div>
                 <div class="panel-body">
                     <form name="viewCurrentBalance">
                         <div class="form-group">
                             <label class="col-sm-2 text-right" for="year">Balance </label>
-                            <label class="col-sm-2 text-right" for="year">Rs. {{ currentBalance }} </label>
+                            <label class="col-sm-2 text-right" for="year">Rs. ${ currentBalance } </label>
                         </div>
                     </form>
                 </div>

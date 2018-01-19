@@ -42,9 +42,13 @@ export class ViewAccountBalanceSummary{
           ];
 
           view() {              
-              console.log(this.startYear,this.startMonth,this.endYear,this.endMonth);
-
-            // check validity of parameters
+              
+              if(this.startMonth == null){
+                alert("Please select start month");
+              }else if(this.endMonth == null){
+                alert("Please select end month");
+              }else{
+                     // check validity of parameters
             if (this.startYear > this.endYear) {
                 alert(" Start Year must be eqal or less than the End Year. \n Please enter valid values.");
             } else if (this.startYear == this.endYear) {
@@ -52,16 +56,19 @@ export class ViewAccountBalanceSummary{
                     alert(" Start Month must be eqal or less than End Month. \n Please enter valid values.");
                 } else {
                     // startYear == endYear && startMonth <= endMonth
+                    this.showmodal =true;
                     this.getChart(this.startYear, this.startMonth, this.endYear, this.endMonth);
                 }
             } else {
                 // startYear < endYear
+                this.showmodal =true;
                 this.getChart(this.startYear, this.startMonth, this.endYear, this.endMonth);
             }
-
-
-
            
+
+              }
+
+         
         }
 
         getChart(startYear,startMonth,endYear,endMonth){
@@ -74,7 +81,7 @@ export class ViewAccountBalanceSummary{
              })
              .then(response => response.json())
              .then(data => {  
-                 console.log(data);
+                
                  var i;
                  for(i=0; i<data.length; i++ ){
                     var value = data[i];
@@ -85,9 +92,7 @@ export class ViewAccountBalanceSummary{
                     this.ceocar.push(value.ceocar);
                     this.marketing.push(value.marketing);
                     this.parking.push(value.parking);
-                 }
-
-                 
+                 }              
                 
 
                  Highcharts.chart('chart', {
@@ -151,18 +156,6 @@ export class ViewAccountBalanceSummary{
                                         
                                     });
 
-                               
-
-
-                //  if(data.length==0){
-                //     alert("No account balances are available for this time period");
-                //   this.router.navigate('admindashboard');
-                //  }else{
-                //   this.accountBalance = data;
-                //   this.accountBalance.month = this.monthsArray[data.month - 1];
-                //   this.showmodal =true;
-                //  }
-                 
              });
         }
 

@@ -30,17 +30,22 @@ export class UploadAccountBalance{
 }
 
 upload(){
+    if(this.filecontent == ""){
+        alert("please select a file to upload");
+    }else{
+        var userRequest = {"year": this.year,"fileContent":this.filecontent };           
+        httpClient.fetch('http://adratest.azurewebsites.net/api/AccountBalance/UploadBalance',
+        {
+            method: "POST",
+            body: json(userRequest)                 
+         })
+         .then(response => response.json())
+         .then(data => {   
+             alert(data);   
+             this.router.navigate('admindashboard');                                                                     
+         });
+    }
         
-    var userRequest = {"year": this.year,"fileContent":this.filecontent };           
-            httpClient.fetch('http://adratest.azurewebsites.net/api/AccountBalance/UploadBalance',
-            {
-                method: "POST",
-                body: json(userRequest)                 
-             })
-             .then(response => response.json())
-             .then(data => {   
-                 alert(data);   
-                 this.router.navigate('admindashboard');                                                                     
-             });
+   
 }
 }

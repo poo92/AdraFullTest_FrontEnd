@@ -11,7 +11,7 @@
 
                         <label for="month" class="col-sm-2 col-sm-offset-1 text-right">Start Month</label>
                         <select value.bind="startMonth" class="form-control col-sm-4" class="form-control col-sm-2">
-                            <option  model.bind="null">Choose a month</option>
+                            <option  model.bind="null">-- select a month --</option>
                             <option repeat.for="month of months"
                                     model.bind="month.id">
                               ${month.name}
@@ -21,14 +21,7 @@
                    
                 </div>
 
-                <br />
-
-                <!-- <div class="row">
-                    <div class="form-group">
-                        <p class="col-sm-3 col-sm-offset-1 required" >Please enter a valid year</p>
-                        <p class="col-sm-3 col-sm-offset-5 required" >Please enter a valid month</p>
-                    </div>
-                </div> -->
+               
 
                 <br />
 
@@ -38,7 +31,7 @@
 
                     <label for="month" class="col-sm-2 col-sm-offset-1 text-right">End Month</label>
                     <select value.bind="endMonth" class="form-control col-sm-4" class="form-control col-sm-2">
-                        <option  model.bind="null">Choose a month</option>
+                        <option  model.bind="null">-- select a month --</option>
                         <option repeat.for="month of months"
                                 model.bind="month.id">
                           ${month.name}
@@ -48,12 +41,7 @@
 
                 <br />
 
-                <!-- <div class="row">
-                    <div class="form-group">
-                        <p class="col-sm-3 col-sm-offset-1 required" >Please enter a valid year</p>
-                        <p class="col-sm-3 col-sm-offset-5 required" >Please enter a valid month</p>
-                    </div>
-                </div> -->
+            
 
                 <br />
 
@@ -67,18 +55,10 @@
 
     </div>
 </div>
-
-<div id="chart" class="modal-body">
+<br>
+<div if.bind="showmodal" class="container col-sm-8 col-sm-offset-2"></div>
+<div id="chart" >
 </div>  
-
-
-<!-- <div if.bind="showmodal" class="modal-content col-sm-10 modalViewBalanceChartCenter">
-    <div id="chart" class="modal-body">
-    </div>   
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
-    </div>
-</div> -->
-
+</div>
 
 </template>
