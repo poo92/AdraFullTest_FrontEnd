@@ -31,7 +31,9 @@ login (){
     //   });
       
     
-    this.router.navigate('admindashboard')
+    // this.router.navigate('admindashboard');
+    this.router.navigate('userdashboard')
+    
 }
 
   // created() {
