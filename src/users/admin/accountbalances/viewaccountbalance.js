@@ -32,7 +32,7 @@ export class ViewAccountBalance{
 
       view() {                   
           var userRequest = {"year": this.year,"month":this.month };           
-          httpClient.fetch('http://localhost:58967/api/AccountBalance/ViewBalance',
+          httpClient.fetch('http://adratest.azurewebsites.net/api/AccountBalance/ViewBalance',
           {
               method: "POST",
               body: json(userRequest)                 

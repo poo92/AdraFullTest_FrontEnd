@@ -32,7 +32,7 @@ export class UploadAccountBalance{
 upload(){
         
     var userRequest = {"year": this.year,"fileContent":this.filecontent };           
-            httpClient.fetch('http://localhost:58967/api/AccountBalance/UploadBalance',
+            httpClient.fetch('http://adratest.azurewebsites.net/api/AccountBalance/UploadBalance',
             {
                 method: "POST",
                 body: json(userRequest)                 
