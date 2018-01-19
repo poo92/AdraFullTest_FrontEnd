@@ -36,7 +36,9 @@ export class ViewAccountBalance{
             alert("Please select a month");
           }  else{
             var userRequest = {"year": this.year,"month":this.month };           
-          httpClient.fetch('http://adratest.azurewebsites.net/api/AccountBalance/ViewBalance',
+        //   httpClient.fetch('http://adratest.azurewebsites.net/api/AccountBalance/ViewBalance',
+        httpClient.fetch('http://adranew.azurewebsites.net/api/AccountBalance/ViewBalance',
+        
           {
               method: "POST",
               body: json(userRequest)                 

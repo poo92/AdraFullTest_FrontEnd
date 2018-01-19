@@ -74,7 +74,7 @@ export class ViewAccountBalanceSummary{
         getChart(startYear,startMonth,endYear,endMonth){
 
             var userRequest = {"startYear": startYear,"startMonth":startMonth,"endYear": endYear,"endMonth":endMonth };           
-            httpClient.fetch('http://adratest.azurewebsites.net/api/AccountBalance/ViewBalanceChart',
+            httpClient.fetch('http://adranew.azurewebsites.net/api/AccountBalance/ViewBalanceChart',
             {
                 method: "POST",
                 body: json(userRequest)                 

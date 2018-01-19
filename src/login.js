@@ -16,23 +16,34 @@ export class Login {
   }
 
 login (){
-  var year =2017; var month=1;
-    // var UserRequest = {"year":2016,"month":1};
-    //   httpClient.fetch('http://localhost:58967/api/AccountBalance/ViewBalance',
-    //   {
-    //       method: "POST",
-    //       body: json(UserRequest)
-                   
-    //   })
-    //   .then(response => response.json())
-    //   .then(data => {     
-    //         console.log(data);           
-    //       // this.accountBalance = data[0];                         
-    //   });
-      
+  console.log(this.username,this.password);
+  if (typeof this.username == 'undefined'){
+    alert("Please enter a username.");
+  }else if(typeof this.password == 'undefined'){
+    alert("Please enter a password.");
+  }else{
+    var userRequest = {"username": this.username,"password":this.password};           
+    httpClient.fetch('http://adranew.azurewebsites.net/api/User/Login',
+    {
+        method: "POST",
+        body: json(userRequest)                 
+     })
+     .then(response => response.json())
+     .then(data => {  
+       if(data == 0){
+         alert("invalid Credentials. Please check again");
+       }else if(data == 1){
+        this.router.navigate('admindashboard');        
+       }else{
+        this.router.navigate('userdashboard')
+
+       }
+                       
+     });
+        
+  }
+
     
-    // this.router.navigate('admindashboard');
-    this.router.navigate('userdashboard')
     
 }
 

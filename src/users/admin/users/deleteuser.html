@@ -1,0 +1,41 @@
+<template>
+    <div class="container col-sm-10 col-sm-offset-1 ">
+        <div class="panel panel-default">
+            <div class="panel-heading panel-header-normal"> Delete User</div>
+    
+            <div class="panel-body">
+                <form name="deleteUser">
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="month" class="col-sm-2 col-sm-offset-1 text-right">Username <span class="required">*</span></label>
+                            <select class="form-control col-sm-2" name="usernameDelete" id="usernameDelete" ng-model="$parent.usernameDelete" ng-options="x for x in usernameFiltered">
+                                <option disabled selected value> -- select a  user -- </option>'
+                            </select>
+                        </div>
+                    </div>
+    
+                    <br />
+    
+                    <div class="row">
+                        <div class="form-group">
+                            <button class="btn btn-primary col-sm-1 col-sm-offset-9" type="submit" click.delegate="ShowDeletePopup()" > Delete</button>
+                        </div>
+                    </div>
+    
+                </form>
+            </div>
+    
+        </div>
+    </div>
+    
+    
+    <div if.bind="showmodal" class="modal-content col-sm-3 modalDeletePopup">
+        <div class="modal-header">
+            <h4 class="modal-title">Are you sure you need to delete the user?</h4>
+        </div>    
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" click.delegate="DeleteUser()">Yes</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="HandleNoButton()">No</button>
+        </div>
+    </div>
+</template>

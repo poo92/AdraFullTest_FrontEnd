@@ -34,7 +34,7 @@ upload(){
         alert("please select a file to upload");
     }else{
         var userRequest = {"year": this.year,"fileContent":this.filecontent };           
-        httpClient.fetch('http://adratest.azurewebsites.net/api/AccountBalance/UploadBalance',
+        httpClient.fetch('http://adranew.azurewebsites.net/api/AccountBalance/UploadBalance',
         {
             method: "POST",
             body: json(userRequest)                 
