@@ -72,12 +72,17 @@ export class ViewAccountBalanceSummary{
         }
 
         getChart(startYear,startMonth,endYear,endMonth){
-
+            var authorize = 'Bearer ' + sessionStorage.getItem('accessToken');                 
             var userRequest = {"startYear": startYear,"startMonth":startMonth,"endYear": endYear,"endMonth":endMonth };           
-            httpClient.fetch('http://adranew.azurewebsites.net/api/AccountBalance/ViewBalanceChart',
+            httpClient.fetch('http://localhost:25882/api/AccountBalance/ViewBalanceChart',
             {
                 method: "POST",
-                body: json(userRequest)                 
+                body: json(userRequest),
+                headers: {
+                    'Authorization': authorize
+                    // 'Content-Type': 'application/json'
+                    // More options
+                }                 
              })
              .then(response => response.json())
              .then(data => {  

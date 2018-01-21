@@ -8,12 +8,17 @@
     
                     <div class="row">
                         
-                            <label class="col-sm-2 text-center" for="username"> Username <span class="required">*</span></label>
+                            <label class="col-sm-2 text-center" for="username"> Email <span class="required">*</span></label>
                             <input class="form-control col-sm-2" type="text" name="username" id="username" value.bind="username" required/>
     
-                            <label for="password" class="col-sm-2 text-center"> Password <span class="required">*</span></label>
-                            <input class="form-control col-sm-2" type="text" name="password" id="password" value.bind="password" required/>
-                        
+                            <label for="lname" class="col-sm-2 text-center"> User Type <span class="required">*</span></label>
+                            <select class="form-control col-sm-2" name="userType" id="userType" value.bind="userType" required>
+                                <option value=0> --- select user type --- </option>
+                                <option value="admin" >Admin User</option>
+                                <option value="normaluser" >System User</option>
+                            </select>
+
+                            
                     </div>  
     
     
@@ -22,19 +27,26 @@
     
     
                     <div class="row">
+
+                            <label for="password" class="col-sm-2 text-center"> Password <span class="required">*</span></label>
+                            <input class="form-control col-sm-2" type="text" name="password" id="password" value.bind="password" required/>
                         
-                            <label class="col-sm-2 text-center" for="fname"> First Name <span class="required">*</span></label>
-                            <input class="form-control col-sm-2" type="text" name="fname" id="fname" value.bind="fname" required />
-    
-                            <label for="lname" class="col-sm-2 text-center"> Last Name <span class="required">*</span></label>
-                            <input class="form-control col-sm-2" type="text" name="lname" id="lname" value.bind="lname" required />
+                        
+                            <label class="col-sm-2 text-center" for="fname"> Confirm Password <span class="required">*</span></label>
+                            <input class="form-control col-sm-2" type="text" name="confirmPassword" id="confirmPassword" value.bind="confirmPassword" required/>
+                            
+                            <!-- <input class="form-control col-sm-2" type="text" name="fname" id="fname" value.bind="fname" required /> -->
+                        
+                            
+                           
+                            <!-- <input class="form-control col-sm-2" type="text" name="lname" id="lname" value.bind="lname" required /> -->
                        
                     </div>
     
     
                     <br />
     
-                    <div class="row">
+                    <!-- <div class="row">
                        
                             <label class="col-sm-2 text-center" for="userType"> User Type <span class="required">*</span></label>
                            <select class="form-control col-sm-2" name="userType" id="userType" value.bind="userType" required>
@@ -44,7 +56,7 @@
                             </select>
     
                        
-                    </div>
+                    </div> -->
     
                     <br />
     

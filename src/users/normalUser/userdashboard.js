@@ -25,7 +25,7 @@ export class UserDashboard{
             
           }else{
             var userRequest = {"accountType": this.accountType};           
-            httpClient.fetch('http://adratest.azurewebsites.net/api/AccountBalance/ViewCurrentBalance',
+            httpClient.fetch('http://adrafulltest.azurewebsites.net/api/AccountBalance/ViewCurrentBalance',
             {
                 method: "POST",
                 body: json(userRequest)                 

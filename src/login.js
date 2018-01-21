@@ -15,51 +15,75 @@ export class Login {
     this.router = router;    
   }
 
-login (){
-  console.log(this.username,this.password);
+login (){  
   if (typeof this.username == 'undefined'){
     alert("Please enter a username.");
   }else if(typeof this.password == 'undefined'){
     alert("Please enter a password.");
   }else{
-    var userRequest = {"username": this.username,"password":this.password};           
-    httpClient.fetch('http://adranew.azurewebsites.net/api/User/Login',
+    // var userRequest = {"username": this.username,"password":this.password};  
+    var userRequest = "grant_type=password&username=" + this.username+ "&password=" + this.password;           
+    
+    // httpClient.fetch('http://adranew.azurewebsites.net/api/User/Login',
+    httpClient.fetch('http://localhost:25882/token',    
     {
         method: "POST",
-        body: json(userRequest)                 
+        body: userRequest,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+          // More options
+      }                 
      })
      .then(response => response.json())
-     .then(data => {  
-       if(data == 0){
-         alert("invalid Credentials. Please check again");
-       }else if(data == 1){
-        this.router.navigate('admindashboard');        
-       }else{
-        this.router.navigate('userdashboard')
+     .then(data => {       
+      if(data.error){
+        alert(data.error_description);
+      }else if(data.access_token){
+        sessionStorage.setItem('accessToken', data.access_token);       
+        this.getUserRole();        
+      }
 
-       }
+      
                        
      });
-        
-  }
 
+     
+
+     }
+     
+        
+  }   
+
+
+  getUserRole(){
+      var authorize = 'Bearer ' + sessionStorage.getItem('accessToken');      
+      var userRequest = {"Email": this.username};         
+      httpClient.fetch('http://localhost:25882/api/Account/UserRole',    
+      {
+          method: "POST",
+          body: json(userRequest),
+          headers: {
+            'Authorization': authorize,
+            'Content-Type': 'application/json'
+            // More options
+        }                 
+       })
+       .then(response => response.json())
+       .then(data => {           
+         if(data == "admin"){
+          this.router.navigate('admindashboard');
+         }else{
+          this.router.navigate('userdashboard')  
+         }                         
+       });
     
     
 }
 
-  // created() {
-  //   httpClient.fetch('http://localhost:25397/api/AccountBalance/GetAccountBalances',
-  //   {
-  //       method: "POST"
-                 
-  //   })
-  //   .then(response => response.json())
-  //   .then(data => {     
-                     
-  //       this.accountBalance = data[0];                         
-  //   });
-    
-  // }
+// getUserType(){
+
+// }
+  
 
   
   

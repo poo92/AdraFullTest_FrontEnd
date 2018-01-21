@@ -13,7 +13,7 @@ export class UploadAccountBalance{
       }
 
     fileSelected() {
-        
+        var authorize = 'Bearer ' + sessionStorage.getItem('accessToken'); 
         var file = document.getElementById("file").files[0];
         if (file) {
         var reader = new FileReader();
@@ -30,14 +30,20 @@ export class UploadAccountBalance{
 }
 
 upload(){
+    var authorize = 'Bearer ' + sessionStorage.getItem('accessToken');       
     if(this.filecontent == ""){
         alert("please select a file to upload");
     }else{
         var userRequest = {"year": this.year,"fileContent":this.filecontent };           
-        httpClient.fetch('http://adranew.azurewebsites.net/api/AccountBalance/UploadBalance',
+        httpClient.fetch('http://localhost:25882/api/AccountBalance/UploadBalance',
         {
             method: "POST",
-            body: json(userRequest)                 
+            body: json(userRequest),
+            headers: {
+                'Authorization': authorize
+                // 'Content-Type': 'application/json'
+                // More options
+            }                 
          })
          .then(response => response.json())
          .then(data => {   

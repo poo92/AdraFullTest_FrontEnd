@@ -31,17 +31,22 @@ export class ViewAccountBalance{
       ];
 
       view() {         
-          console.log(this.month);    
+        var authorize = 'Bearer ' + sessionStorage.getItem('accessToken');   
           if(this.month == null){
             alert("Please select a month");
           }  else{
             var userRequest = {"year": this.year,"month":this.month };           
         //   httpClient.fetch('http://adratest.azurewebsites.net/api/AccountBalance/ViewBalance',
-        httpClient.fetch('http://adranew.azurewebsites.net/api/AccountBalance/ViewBalance',
+        httpClient.fetch('http://localhost:25882/api/AccountBalance/ViewBalance',
         
           {
               method: "POST",
-              body: json(userRequest)                 
+              body: json(userRequest),
+              headers: {
+                'Authorization': authorize,
+                'Content-Type': 'application/json'
+                // More options
+            }                
            })
            .then(response => response.json())
            .then(data => {         
