@@ -16,15 +16,7 @@ export class ViewAccountBalanceSummary{
         this.showmodal =false;
         this.accountBalance=null; 
         this.monthsArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-      
-        this.year = [];
-        this.month = [];
-        this.rnd = [];
-        this.canteen = [];
-        this.ceocar = [];
-        this.marketing = [];
-        this.parking = [];
-    
+        
     }
 
         months = [
@@ -87,18 +79,26 @@ export class ViewAccountBalanceSummary{
              })
              .then(response => response.json())
              .then(data => {  
+                var year = [];
+                var month = [];
+                var rnd = [];
+                var canteen = [];
+                var ceocar = [];
+                var marketing = [];
+                var parking = [];
                 
                  var i;
                  for(i=0; i<data.length; i++ ){
                     var value = data[i];
-                    this.year.push(value.year);
-                    this.month.push(this.monthsArray[value.month - 1]);
-                    this.rnd.push(value.rnd);
-                    this.canteen.push(value.canteen);
-                    this.ceocar.push(value.ceocar);
-                    this.marketing.push(value.marketing);
-                    this.parking.push(value.parking);
-                 }              
+                    year.push(value.year);
+                    month.push(this.monthsArray[value.month - 1]);
+                    rnd.push(value.rnd);
+                    canteen.push(value.canteen);
+                    ceocar.push(value.ceocar);
+                    marketing.push(value.marketing);
+                    parking.push(value.parking);
+                 }       
+                      
                 
 
                  Highcharts.chart('chart', {
@@ -108,7 +108,7 @@ export class ViewAccountBalanceSummary{
                                         },
                     
                                         subtitle: {
-                                            text: 'From ' + this.month[0] + ' ' + this.year[0] + ' To ' + this.month[this.month.length - 1] + '  ' + this.year[this.year.length - 1] + ''
+                                            text: 'From ' + month[0] + ' ' + year[0] + ' To ' + month[month.length - 1] + '  ' + year[year.length - 1] + ''
                                         },
                     
                                         yAxis: {
@@ -121,7 +121,7 @@ export class ViewAccountBalanceSummary{
                                             title: {
                                                 text: 'Time Period'
                                             },
-                                            categories: this.month
+                                            categories: month
                                         },
                                         legend: {
                                             layout: 'vertical',
@@ -130,19 +130,19 @@ export class ViewAccountBalanceSummary{
                                         },
                                         series: [{
                                             name: 'R&D',
-                                            data: this.rnd
+                                            data: rnd
                                         }, {
                                             name: 'Canteen',
-                                            data: this.canteen
+                                            data: canteen
                                         }, {
                                             name: 'Ceo\'s car',
-                                            data: this.ceocar
+                                            data: ceocar
                                         }, {
                                             name: 'Marketing',
-                                            data: this.marketing
+                                            data: marketing
                                         }, {
                                             name: 'Parking Fines',
-                                            data: this.parking
+                                            data: parking
                                         }],
                     
                                         responsive: {
