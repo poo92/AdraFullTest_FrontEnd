@@ -50,5 +50,9 @@ export class UserDashboard{
           }
         
        }
+       logout(){
+        sessionStorage.removeItem('accessToken');
+        this.router.navigate('');
+      }
          
        }

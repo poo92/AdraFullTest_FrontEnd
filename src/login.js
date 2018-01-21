@@ -10,9 +10,7 @@ export class Login {
 
     static inject() { return [Router]; }
 
-  constructor(router) {    
-    // this.contacts = [];
-    // this.accountBalance = null;
+  constructor(router) {     
     this.router = router;    
   }
 
