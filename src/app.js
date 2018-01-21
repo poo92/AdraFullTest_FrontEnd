@@ -1,6 +1,7 @@
 import { AuthorizeStep } from './authorizestep';
 import { Router, RouterConfiguration } from 'aurelia-router';  
-import {inject} from 'aurelia-framework';  
+import {inject} from 'aurelia-framework'; 
+import * as URLCONFIG from './custom/urlconfig' ;
 
 export class App {
   configureRouter(config, router){

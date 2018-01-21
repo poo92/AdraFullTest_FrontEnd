@@ -3,6 +3,7 @@ import{Router} from 'aurelia-router';
 import {HttpClient, json} from 'aurelia-fetch-client';
 import $ from "jquery";
 import Hightcharts from "highcharts";
+import * as URLCONFIG from '../../../custom/urlconfig' ;
 
 let httpClient = new HttpClient();
 export class ViewAccountBalanceSummary{
@@ -74,7 +75,7 @@ export class ViewAccountBalanceSummary{
         getChart(startYear,startMonth,endYear,endMonth){
             var authorize = 'Bearer ' + sessionStorage.getItem('accessToken');                 
             var userRequest = {"startYear": startYear,"startMonth":startMonth,"endYear": endYear,"endMonth":endMonth };           
-            httpClient.fetch('http://localhost:25882/api/AccountBalance/ViewBalanceChart',
+            httpClient.fetch(URLCONFIG.BASE_URL + 'api/AccountBalance/ViewBalanceChart',
             {
                 method: "POST",
                 body: json(userRequest),

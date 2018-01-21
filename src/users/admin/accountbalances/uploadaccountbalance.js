@@ -1,6 +1,7 @@
 import {inject} from 'aurelia-framework';
 import{Router} from 'aurelia-router';
 import {HttpClient, json} from 'aurelia-fetch-client';
+import * as URLCONFIG from '../../../custom/urlconfig' ;
 
 let httpClient = new HttpClient();
 export class UploadAccountBalance{
@@ -18,8 +19,7 @@ export class UploadAccountBalance{
         if (file) {
         var reader = new FileReader();
         reader.readAsText(file, "UTF-8");
-        reader.onload = function (evt) {
-            console.log(evt.target.result);
+        reader.onload = function (evt) {            
             this.filecontent = evt.target.result;
         }.bind(this)
         reader.onerror = function (evt) {
@@ -35,7 +35,7 @@ upload(){
         alert("please select a file to upload");
     }else{
         var userRequest = {"year": this.year,"fileContent":this.filecontent };           
-        httpClient.fetch('http://localhost:25882/api/AccountBalance/UploadBalance',
+        httpClient.fetch( URLCONFIG.BASE_URL + 'api/AccountBalance/UploadBalance',
         {
             method: "POST",
             body: json(userRequest),

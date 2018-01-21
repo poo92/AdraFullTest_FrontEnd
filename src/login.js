@@ -1,6 +1,7 @@
 import {inject} from 'aurelia-framework';
 import{Router} from 'aurelia-router';
 import {HttpClient, json} from 'aurelia-fetch-client';
+import * as URLCONFIG from './custom/urlconfig' ;
 
 
 let httpClient = new HttpClient();
@@ -25,7 +26,7 @@ login (){
     var userRequest = "grant_type=password&username=" + this.username+ "&password=" + this.password;           
     
     // httpClient.fetch('http://adranew.azurewebsites.net/api/User/Login',
-    httpClient.fetch('http://localhost:25882/token',    
+    httpClient.fetch(URLCONFIG.BASE_URL + 'token',    
     {
         method: "POST",
         body: userRequest,
@@ -58,7 +59,7 @@ login (){
   getUserRole(){
       var authorize = 'Bearer ' + sessionStorage.getItem('accessToken');      
       var userRequest = {"Email": this.username};         
-      httpClient.fetch('http://localhost:25882/api/Account/UserRole',    
+      httpClient.fetch(URLCONFIG.BASE_URL + 'api/Account/UserRole',    
       {
           method: "POST",
           body: json(userRequest),

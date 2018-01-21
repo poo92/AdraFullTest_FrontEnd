@@ -1,6 +1,7 @@
 import {inject} from 'aurelia-framework';
 import{Router} from 'aurelia-router';
 import {HttpClient, json} from 'aurelia-fetch-client';
+import * as URLCONFIG from '../../../custom/urlconfig' ;
 
 let httpClient = new HttpClient();
 export class AddUser{
@@ -26,7 +27,7 @@ export class AddUser{
             // var userRequest = {"username": this.username,"password":this.password,"fname":this.fname,"lname":this.lname,"userType":this.userType };           
             var userRequest = {"Email": this.username,"Password": this.password,"ConfirmPassword": this.confirmPassword,"AccountType":this.userType};
             console.log(userRequest);
-            httpClient.fetch('http://localhost:25882/api/Account/Register',
+            httpClient.fetch(URLCONFIG.BASE_URL + 'api/Account/Register',
             {
                 method: "POST",
                 body: json(userRequest),

@@ -1,6 +1,7 @@
 import {inject} from 'aurelia-framework';
 import{Router} from 'aurelia-router';
 import {HttpClient, json} from 'aurelia-fetch-client';
+import * as URLCONFIG from '../../../custom/urlconfig' ;
 
 let httpClient = new HttpClient();
 export class ViewAccountBalance{
@@ -37,7 +38,7 @@ export class ViewAccountBalance{
           }  else{
             var userRequest = {"year": this.year,"month":this.month };           
         //   httpClient.fetch('http://adratest.azurewebsites.net/api/AccountBalance/ViewBalance',
-        httpClient.fetch('http://localhost:25882/api/AccountBalance/ViewBalance',
+        httpClient.fetch(URLCONFIG.BASE_URL + 'api/AccountBalance/ViewBalance',
         
           {
               method: "POST",
