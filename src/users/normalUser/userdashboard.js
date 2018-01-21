@@ -16,6 +16,12 @@ export class UserDashboard{
        
        }
 
+       created(){
+        if(sessionStorage.getItem('userType') != "normaluser"){
+          this.router.navigate('admindashboard');            
+        }
+    }
+
 
        view(){
         var authorize = 'Bearer ' + sessionStorage.getItem('accessToken');         
@@ -50,7 +56,7 @@ export class UserDashboard{
           }
         
        }
-       logout(){
+         logout(){
         sessionStorage.removeItem('accessToken');
         this.router.navigate('');
       }

@@ -19,6 +19,12 @@ export class ViewAccountBalanceSummary{
         
     }
 
+    created(){
+        if(sessionStorage.getItem('userType') != "admin"){
+          this.router.navigate('userdashboard');            
+        }
+    }
+
         months = [
             { id: 1, name: 'January' },
             { id: 2, name: 'February' },

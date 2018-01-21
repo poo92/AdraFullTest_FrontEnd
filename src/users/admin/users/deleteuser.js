@@ -11,4 +11,16 @@ export class DeleteUser{
        this.router = router;  
        
       }
+
+      created(){
+        if(sessionStorage.getItem('userType') != "admin"){
+          this.router.navigate('userdashboard');            
+        }
+    }
+
+      created(){
+        if(sessionStorage.getItem('userType') != "normaluser"){
+          this.router.navigate('admindashboard');            
+        }
+      }
     }

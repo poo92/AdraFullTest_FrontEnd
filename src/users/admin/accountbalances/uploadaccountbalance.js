@@ -13,6 +13,12 @@ export class UploadAccountBalance{
        this.year =2017;
       }
 
+      created(){
+        if(sessionStorage.getItem('userType') != "admin"){
+          this.router.navigate('userdashboard');            
+        }
+    }
+
     fileSelected() {
         var authorize = 'Bearer ' + sessionStorage.getItem('accessToken'); 
         var file = document.getElementById("file").files[0];

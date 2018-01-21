@@ -10,9 +10,15 @@ export class AddUser{
     constructor(router) {  
        this.router = router;  
        
-      }
+    }
 
-      add(){
+    created(){
+      if(sessionStorage.getItem('userType') != "admin"){
+        this.router.navigate('userdashboard');            
+      }
+  }
+
+    add(){
         var errorList = [];
         var authorize = 'Bearer ' + sessionStorage.getItem('accessToken');   
         if (typeof this.username == 'undefined'){

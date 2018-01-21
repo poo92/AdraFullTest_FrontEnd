@@ -70,9 +70,11 @@ login (){
        .then(response => response.json())
        .then(data => {           
          if(data == "admin"){
+          sessionStorage.setItem('userType', "admin");
           this.router.navigate('admindashboard');
          }else{
-          this.router.navigate('userdashboard')  
+          sessionStorage.setItem('userType', "normaluser");          
+          this.router.navigate('userdashboard');  
          }                         
        });
     

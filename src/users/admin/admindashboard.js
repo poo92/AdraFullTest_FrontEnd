@@ -10,6 +10,12 @@ export class AdminDashboard {
         this.router = router;    
       }
 
+      created(){
+          if(sessionStorage.getItem('userType') != "admin"){
+            this.router.navigate('userdashboard');            
+          }
+      }
+
       logout(){
         sessionStorage.removeItem('accessToken');
         this.router.navigate('');
