@@ -13,4 +13,4 @@ To set up in development environment :
   3. To run the project : au run
   4. To check the frontend with locally running backend change the BASE_URL in /src/custom/urlconfig.js file.
   5. To build and deploy the project : au build --env prod 
-                                       Then copy the file index.html and the folder /scripts to the main deployment folder on your server.
+                                       Then copy the file index.html and the scripts folder to the main deployment folder on your server.
