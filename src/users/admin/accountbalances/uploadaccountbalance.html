@@ -2,7 +2,16 @@
     <div class="container col-xs-8 col-xs-offset-2">
         <div class="panel panel-default">
             <div class="panel-heading panel-header-normal"> Upload Account File  </div>
-    
+            <!-- the activity indicator -->
+            <div if.bind="active">
+                    <div class="spinner">
+                        <div class="rect1"></div>
+                        <div class="rect2"></div>
+                        <div class="rect3"></div>
+                        <div class="rect4"></div>
+                        <div class="rect5"></div>
+                      </div>
+                </div>
             <div class="panel-body">
     
                 <form name="uploadBalance" class="form-inline">
@@ -11,7 +20,7 @@
                             <label class="col-xs-2" for="year">Year <span class="required">*</span></label>
                             <input class="form-control col-xs-2" type="number" name="year" id="year"  min="2016" placeholder="2016" value.bind="year"/>
     
-                            <span class="col-sm-1 col-sm-offset-1 text-right required">*</span><input class="col-sm-4" type="file"  name="file" id="file" accept=".txt,.xlsx,.xls" change.delegate="fileSelected($event)"/>
+                            <span class="col-sm-1 col-sm-offset-1 text-right required">*</span><input class="col-sm-4" type="file"  name="file" id="file" accept=".txt" change.delegate="fileSelected($event)"/>
     
                         </div>
                     </div>

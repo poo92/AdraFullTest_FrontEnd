@@ -16,7 +16,7 @@ export class ViewAccountBalanceSummary{
         this.showmodal =false;
         this.accountBalance=null; 
         this.monthsArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        
+        this.active = false;
     }
 
     created(){
@@ -71,6 +71,7 @@ export class ViewAccountBalanceSummary{
         }
 
         getChart(startYear,startMonth,endYear,endMonth){
+            this.active=true;
             var authorize = 'Bearer ' + sessionStorage.getItem('accessToken');                 
             var userRequest = {"startYear": startYear,"startMonth":startMonth,"endYear": endYear,"endMonth":endMonth };           
             httpClient.fetch(URLCONFIG.BASE_URL + 'api/AccountBalance/ViewBalanceChart',
@@ -85,6 +86,7 @@ export class ViewAccountBalanceSummary{
              })
              .then(response => response.json())
              .then(data => {  
+                this.active=false;
                 var year = [];
                 var month = [];
                 var rnd = [];

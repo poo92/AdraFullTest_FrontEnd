@@ -2,7 +2,16 @@
 <div class="container col-sm-8 col-sm-offset-2">
     <div class="panel panel-default">
         <div class="panel-heading panel-header-normal"> Upload Account Balance  </div>
-
+    <!-- the activity indicator -->
+    <div if.bind="active">
+            <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+              </div>
+        </div>
         <div class="panel-body">
             <form name="viewBalanceChart" class="form-inline">
                 <div class="row">

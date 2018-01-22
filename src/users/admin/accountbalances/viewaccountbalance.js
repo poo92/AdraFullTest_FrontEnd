@@ -13,7 +13,7 @@ export class ViewAccountBalance{
        this.showmodal =false;
        this.accountBalance=null; 
        this.monthsArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
+       this.active = false;
       }
 
       created(){
@@ -42,6 +42,7 @@ export class ViewAccountBalance{
           if(this.month == null){
             alert("Please select a month");
           }  else{
+            this.active=true;
             var userRequest = {"year": this.year,"month":this.month };           
         //   httpClient.fetch('http://adratest.azurewebsites.net/api/AccountBalance/ViewBalance',
         httpClient.fetch(URLCONFIG.BASE_URL + 'api/AccountBalance/ViewBalance',
@@ -58,14 +59,15 @@ export class ViewAccountBalance{
            .then(response => response.json())
            .then(data => {         
                if(data.year==0){
+                this.active=false;                
                 alert("No account balances are available for this month");
-                this.router.navigate('admindashboard');
+                this.router.navigate('admindashboard/viewaccountbalance');
                }else{
+                this.active=false;
                 this.accountBalance = data;
                 this.accountBalance.month = this.monthsArray[data.month - 1];
                 this.showmodal =true;
-               }
-               
+               }               
            });
           }    
           

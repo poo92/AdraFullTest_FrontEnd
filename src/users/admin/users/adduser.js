@@ -8,8 +8,8 @@ export class AddUser{
     static inject() { return [Router]; }
 
     constructor(router) {  
-       this.router = router;  
-       
+       this.router = router; 
+       this.active = false;       
     }
 
     created(){
@@ -30,6 +30,7 @@ export class AddUser{
           }else if( this.userType == 0){
             alert("Please select a user type.");
           }else{
+            this.active=true;
             // var userRequest = {"username": this.username,"password":this.password,"fname":this.fname,"lname":this.lname,"userType":this.userType };           
             var userRequest = {"Email": this.username,"Password": this.password,"ConfirmPassword": this.confirmPassword,"AccountType":this.userType};
             console.log(userRequest);
@@ -45,6 +46,7 @@ export class AddUser{
              })
              .then(response => response.json())
              .then(data => { 
+              this.active=false;                 
               if(data.ModelState){
                 var  ModelStates = data.ModelState;         
                 for(var key in ModelStates){   

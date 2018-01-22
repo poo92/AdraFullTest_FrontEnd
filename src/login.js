@@ -8,11 +8,15 @@ let httpClient = new HttpClient();
 
 export class Login {
 
-    static inject() { return [Router]; }
-
-  constructor(router) {     
+  static inject() { return [Router]; }
+    
+  
+  constructor(router) {  
+    this.active = false;   
     this.router = router;    
+    
   }
+ 
 
 login (){  
   if (typeof this.username == 'undefined'){
@@ -20,6 +24,7 @@ login (){
   }else if(typeof this.password == 'undefined'){
     alert("Please enter a password.");
   }else{
+    this.active=true;
     // var userRequest = {"username": this.username,"password":this.password};  
     var userRequest = "grant_type=password&username=" + this.username+ "&password=" + this.password;           
     
@@ -37,6 +42,7 @@ login (){
      .then(data => {       
       if(data.error){
         alert(data.error_description);
+        this.active=false;
       }else if(data.access_token){
         sessionStorage.setItem('accessToken', data.access_token);       
         this.getUserRole();        
@@ -52,8 +58,6 @@ login (){
      
         
   }   
-
-
   getUserRole(){
       var authorize = 'Bearer ' + sessionStorage.getItem('accessToken');      
       var userRequest = {"Email": this.username};         

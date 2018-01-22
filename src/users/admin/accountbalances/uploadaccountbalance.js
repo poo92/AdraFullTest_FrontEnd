@@ -11,6 +11,7 @@ export class UploadAccountBalance{
        this.router = router;  
        this.filecontent="";  
        this.year =2017;
+       this.active = false;
       }
 
       created(){
@@ -40,6 +41,7 @@ upload(){
     if(this.filecontent == ""){
         alert("please select a file to upload");
     }else{
+        this.active=true;
         var userRequest = {"year": this.year,"fileContent":this.filecontent };           
         httpClient.fetch( URLCONFIG.BASE_URL + 'api/AccountBalance/UploadBalance',
         {
@@ -52,9 +54,10 @@ upload(){
             }                 
          })
          .then(response => response.json())
-         .then(data => {   
-             alert(data);   
-             this.router.navigate('admindashboard');                                                                     
+         .then(data => {       
+            this.active=false;                  
+            alert(data);   
+            this.router.navigate('admindashboard/uploadaccountbalance');                                                                     
          });
     }
         
