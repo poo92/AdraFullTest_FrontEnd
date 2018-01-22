@@ -1,23 +1,26 @@
-import {inject} from 'aurelia-framework';
-import{Router} from 'aurelia-router';
-import {HttpClient, json} from 'aurelia-fetch-client';
+import { inject } from 'aurelia-framework';
+import { Router } from 'aurelia-router';
+import { HttpClient, json } from 'aurelia-fetch-client';
 
 let httpClient = new HttpClient();
 export class AdminDashboard {
+  // injecting the router
+  static inject() { return [Router]; }
 
-    static inject() { return [Router]; }
-    constructor(router) {     
-        this.router = router;    
-      }
+  constructor(router) {
+    this.router = router;
+  }
 
-      created(){
-          if(sessionStorage.getItem('userType') != "admin"){
-            this.router.navigate('userdashboard');            
-          }
-      }
+  created() {
+    // check if user is a admin
+    if (sessionStorage.getItem('userType') != "admin") {
+      this.router.navigate('userdashboard');
+    }
+  }
 
-      logout(){
-        sessionStorage.removeItem('accessToken');
-        this.router.navigate('');
-      }
+  // function to logout
+  logout() {
+    sessionStorage.removeItem('accessToken'); // remove access token
+    this.router.navigate(''); // navigate to login page
+  }
 }

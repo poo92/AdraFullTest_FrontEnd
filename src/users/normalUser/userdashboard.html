@@ -1,71 +1,81 @@
-<template>        
+<template>
     <div style="height:5px"></div>
 
-
-<div class="container">
-    <div class="row">
-        <button class="btn btn-primary col-sm-offset-11 col-sm-1" id="logout" click.delegate ="logout()"> Logout </button>
+    <!-- log out button -->
+    <div class="container">
+        <div class="row">
+            <button class="btn btn-primary col-sm-offset-11 col-sm-1" id="logout" click.delegate="logout()"> Logout </button>
+        </div>
     </div>
-</div>
+    <!-- title -->
+    <div class="container">
+        <h2 class="col-sm-12">User Dashboard</h2>
+    </div>
+    <br />
 
+    <div class="container">
+        <div class="row">
 
-
-<div class="container">
-    <h2 class="col-sm-12">User Dashboard</h2>
-</div>
-<br />
-
-<div class="container">
-    <div class="row">
-
-
-        <div class="col-sm-8 col-sm-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading" style="font-weight:bold">View Current Account Balances</div>
-                <div class="panel-body">
-                    <form name="viewCurrentBalance" class="form-inline">
-                        <div class="row">
-                            <label class="col-sm-3 text-right" for="year">Account Type <span class="required">*</span></label>
-                            <select class="form-control col-sm-4" name="accountType" id="accountType" value.bind="accountType" required>
-                                <option value="none" selected> -- select Account Type-- </option>
-                                <option value="rnd">R&D</option>
-                                <option value="canteen">Canteen</option>
-                                <option value="ceocar">CEO's Car</option>
-                                <option value="marketing">Marketing</option>
-                                <option value="parking">Parking</option>
-                            </select>
+            <div class="col-sm-8 col-sm-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="font-weight:bold">View Current Account Balances</div>
+                    <!-- the activity indicator -->
+                    <div if.bind="active">
+                        <div class="spinner">
+                            <div class="rect1"></div>
+                            <div class="rect2"></div>
+                            <div class="rect3"></div>
+                            <div class="rect4"></div>
+                            <div class="rect5"></div>
                         </div>
+                    </div>
+                    <!-- end of activity indicator -->
+                    <div class="panel-body">
+                        <form name="viewCurrentBalance" class="form-inline">
+                            <div class="row">
+                                <!-- label for account type -->
+                                <label class="col-sm-3 text-right" for="year">Account Type
+                                    <span class="required">*</span>
+                                </label>
+                                <!-- input for account type -->
+                                <select class="form-control col-sm-4" name="accountType" id="accountType" value.bind="accountType" required>
+                                    <option value="none" selected> -- select Account Type-- </option>
+                                    <option value="rnd">R&D</option>
+                                    <option value="canteen">Canteen</option>
+                                    <option value="ceocar">CEO's Car</option>
+                                    <option value="marketing">Marketing</option>
+                                    <option value="parking">Parking</option>
+                                </select>
+                            </div>
                             <br>
-                        <div class="row">
-                            
-                                <button class="btn btn-primary col-sm-1 col-sm-offset-9" type="submit" click.delegate="view()" > View</button>
-                            
-                        </div>
-
-                    </form>
+                            <!-- button -->
+                            <div class="row">
+                                <button class="btn btn-primary col-sm-1 col-sm-offset-9" type="submit" click.delegate="view()"> View</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-sm-8 col-sm-offset-2" if.bind="showmodal">
-            <div class="panel panel-default">
-                <div class="panel-heading" style="font-weight:bold">Current Balance of  ${ accountType } Account </div>
-                <div class="panel-body">
-                    <form name="viewCurrentBalance">
-                        <div class="form-group">
-                            <label class="col-sm-2 text-right" for="year">Balance </label>
-                            <label class="col-sm-2 text-right" for="year">Rs. ${ currentBalance } </label>
-                        </div>
-                    </form>
+            <!-- panel to show current balance -->
+            <div class="col-sm-8 col-sm-offset-2" if.bind="showmodal">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="font-weight:bold">Current Balance of ${ accountType } Account </div>
+                    <div class="panel-body">
+                        <form name="viewCurrentBalance">
+                            <div class="form-group">
+                                <label class="col-sm-2 text-right" for="year">Balance </label>
+                                <label class="col-sm-2 text-right" for="year">Rs. ${ currentBalance } </label>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
+
+
+
+
+
         </div>
-
-
-
-
-
     </div>
-</div>
 
 </template>

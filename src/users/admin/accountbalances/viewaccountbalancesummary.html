@@ -1,73 +1,74 @@
-<template>    
-<div class="container col-sm-8 col-sm-offset-2">
-    <div class="panel panel-default">
-        <div class="panel-heading panel-header-normal"> Upload Account Balance  </div>
-    <!-- the activity indicator -->
-    <div if.bind="active">
-            <div class="spinner">
-                <div class="rect1"></div>
-                <div class="rect2"></div>
-                <div class="rect3"></div>
-                <div class="rect4"></div>
-                <div class="rect5"></div>
-              </div>
-        </div>
-        <div class="panel-body">
-            <form name="viewBalanceChart" class="form-inline">
-                <div class="row">
+<template>
+    <div class="container col-sm-8 col-sm-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading panel-header-normal"> Upload Account Balance </div>
+            <!-- the activity indicator -->
+            <div if.bind="active">
+                <div class="spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+            </div>
+            <!-- end of activity indicator -->
+
+            <div class="panel-body">
+                <form name="viewBalanceChart" class="form-inline">
+
+                    <div class="row">
+                        <!-- label for start year -->
                         <label class="col-sm-2 text-right" for="year">Start Year</label>
-                        <input class="form-control col-sm-2" type="number" name="startYear" id="startYear"  min="2016" placeholder="2016" value.bind="startYear" />
-
+                        <!-- input for start year -->
+                        <input class="form-control col-sm-2" type="number" name="startYear" id="startYear" min="2016" placeholder="2016" value.bind="startYear"
+                        />
+                        <!-- label for start month -->
                         <label for="month" class="col-sm-2 col-sm-offset-1 text-right">Start Month</label>
+                        <!-- input for start month -->
                         <select value.bind="startMonth" class="form-control col-sm-4" class="form-control col-sm-2">
-                            <option  model.bind="null">-- select a month --</option>
-                            <option repeat.for="month of months"
-                                    model.bind="month.id">
-                              ${month.name}
+                            <option model.bind="null">-- select a month --</option>
+                            <option repeat.for="month of months" model.bind="month.id">
+                                ${month.name}
                             </option>
-                          </select>
+                        </select>
+                    </div>
 
-                   
-                </div>
+                    <br />
 
-               
+                    <div class="row">
+                        <!-- label for end year -->
+                        <label class="col-sm-2 text-right" for="year">End Year</label>
+                        <!-- input for end year -->
+                        <input class="form-control col-sm-2" type="number" name="endYear" id="endYear" min="2016" placeholder="2016" value.bind="endYear"
+                        />
+                        <!-- label for end month -->
+                        <label for="month" class="col-sm-2 col-sm-offset-1 text-right">End Month</label>
+                        <!-- input for end month -->
+                        <select value.bind="endMonth" class="form-control col-sm-4" class="form-control col-sm-2">
+                            <option model.bind="null">-- select a month --</option>
+                            <option repeat.for="month of months" model.bind="month.id">
+                                ${month.name}
+                            </option>
+                        </select>
+                    </div>
 
-                <br />
-
-                <div class="row">
-                    <label class="col-sm-2 text-right" for="year">End Year</label>
-                    <input class="form-control col-sm-2" type="number" name="endYear" id="endYear"  min="2016" placeholder="2016" value.bind="endYear" />
-
-                    <label for="month" class="col-sm-2 col-sm-offset-1 text-right">End Month</label>
-                    <select value.bind="endMonth" class="form-control col-sm-4" class="form-control col-sm-2">
-                        <option  model.bind="null">-- select a month --</option>
-                        <option repeat.for="month of months"
-                                model.bind="month.id">
-                          ${month.name}
-                        </option>
-                      </select>
-                </div>
-
-                <br />
-
-            
-
-                <br />
-
-
-                <div class="row">                    
+                    <br />
+                    <!-- button -->
+                    <div class="row">
                         <button class="btn btn-primary col-sm-2 col-sm-offset-9" type="submit" click.delegate="view()"> View </button>
-                </div>
+                    </div>
 
-            </form>
+                </form>
+            </div>
+
         </div>
-
     </div>
-</div>
-<br>
-<div if.bind="showmodal" class="container col-sm-8 col-sm-offset-2"></div>
-<div id="chart" >
-</div>  
-</div>
+    <br>
+    <!-- panel to show the chart -->
+    <div if.bind="showmodal" class="container col-sm-8 col-sm-offset-2"></div>
+    <div id="chart">
+    </div>
+    </div>
 
 </template>

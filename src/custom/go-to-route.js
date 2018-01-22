@@ -1,4 +1,4 @@
-
+// a custom component for navigation
 import { customAttribute, bindable, inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 

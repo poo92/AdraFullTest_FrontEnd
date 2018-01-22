@@ -2,59 +2,55 @@
     <div class="container col-sm-8 col-sm-offset-2 ">
         <div class="panel panel-default">
             <div class="panel-heading panel-header-normal"> View Account Balances </div>
-    
-             <!-- the activity indicator -->
-             <div if.bind="active">
-                    <div class="spinner">
-                        <div class="rect1"></div>
-                        <div class="rect2"></div>
-                        <div class="rect3"></div>
-                        <div class="rect4"></div>
-                        <div class="rect5"></div>
-                      </div>
+
+            <!-- the activity indicator -->
+            <div if.bind="active">
+                <div class="spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
                 </div>
+            </div>
+            <!-- end of activity indicator -->
+
             <div class="panel-body">
                 <form name="viewBalance" class="form-inline">
-                    <div class="row">                        
-                            <label class="col-sm-2 text-right" for="year">Year <span class="required">*</span></label>
-                            <input class="form-control col-sm-2" type="number" name="year" id="year"  min="2016" placeholder="2016" value.bind="year" />
-    
-                            <label for="month" class="col-sm-2 col-sm-offset-1 text-right">Month <span class="required">*</span></label>
-                            <!-- <select class="form-control col-sm-3" name="month" id="month" month-options></select> -->
-    
-                            <select value.bind="month" class="form-control col-sm-4">
-                                <option  model.bind="null"> -- select a month --</option>
-                                <option repeat.for="month of months"
-                                        model.bind="month.id">
-                                  ${month.name}
-                                </option>
-                              </select>
-                      
-                    </div>
-    
-                    <!-- <div class="row">
-                        <div class="form-group">
-                            <p class="col-sm-3 col-sm-offset-1 required" >Please enter a valid year</p>
-                        </div>
-                    </div> -->
-    
-                    <br />
-    
                     <div class="row">
-                       
-                            <button class="btn btn-primary col-sm-2 col-sm-offset-9" type="submit" click.delegate="view()"> View</button>
-    </div>
-                    
-    
+                        <!-- label for year -->
+                        <label class="col-sm-2 text-right" for="year">Year
+                            <span class="required">*</span>
+                        </label>
+                        <!-- input for year -->
+                        <input class="form-control col-sm-2" type="number" name="year" id="year" min="2016" placeholder="2016" value.bind="year"
+                        />
+
+                        <!-- label for month -->
+                        <label for="month" class="col-sm-2 col-sm-offset-1 text-right">Month
+                            <span class="required">*</span>
+                        </label>
+                        <!-- input for month -->
+                        <select value.bind="month" class="form-control col-sm-4">
+                            <option model.bind="null"> -- select a month --</option>
+                            <option repeat.for="month of months" model.bind="month.id">
+                                ${month.name}
+                            </option>
+                        </select>
+
+                    </div>
+                    <br />
+                    <!-- button -->
+                    <div class="row">
+                        <button class="btn btn-primary col-sm-2 col-sm-offset-9" type="submit" click.delegate="view()"> View</button>
+                    </div>
+
                 </form>
             </div>
-    
+
         </div>
     </div>
-    
-      
-
-    
+    <!-- panel to show the account balances -->
     <div class="col-sm-10 col-sm-offset-1" if.bind="showmodal">
         <div class="panel panel-default">
             <div class="panel-heading" style="font-weight:bold">Balances as of ${ accountBalance.month } ${ accountBalance.year }</div>
@@ -75,7 +71,6 @@
                             <td> Rs ${ accountBalance.marketing}</td>
                             <td> Rs ${ accountBalance.parking}</td>
                         </tr>
-            
                     </table>
                 </form>
             </div>
