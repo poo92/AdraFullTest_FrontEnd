@@ -43,7 +43,15 @@ export class ViewAccountBalanceSummary {
     ];
 
     view() {
-        if (this.startMonth == null) { // if start month is not elected
+        if (this.startYear == '') { // if year is not selected
+            alert("Please select a start year");
+        } else if (this.endYear == '') { // if year is not selected
+            alert("Please select a end year");
+        } else if (this.startYear.length < 4) {
+            alert("Please enter a valid start year");
+        } else if (this.endYear.length < 4) {
+            alert("Please enter a valid end year");
+        } else if (this.startMonth == null) { // if start month is not elected
             alert("Please select start month");
         } else if (this.endMonth == null) {  // if start month is not elected
             alert("Please select end month");

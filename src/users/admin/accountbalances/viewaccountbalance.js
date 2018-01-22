@@ -41,8 +41,11 @@ export class ViewAccountBalance {
   ];
 
   view() {
-    
-    if (this.month == null) { // if month is not selected
+    if (this.year == '') { // if year is not selected
+      alert("Please select a year");
+    } else if (this.year.length < 4) {
+      alert("Please enter a valid  year");
+    } else if (this.month == null) { // if month is not selected
       alert("Please select a month");
     } else {
       this.active = true; // show activity indicator
@@ -74,5 +77,5 @@ export class ViewAccountBalance {
     }
 
   }
- 
+
 }
