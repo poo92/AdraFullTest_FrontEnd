@@ -4,6 +4,7 @@ import {inject} from 'aurelia-framework';
 import * as URLCONFIG from './custom/urlconfig' ;
 
 export class App {
+  message = 'Hello World!';
   // configure the routing settings
   configureRouter(config, router){
     let self = this;
