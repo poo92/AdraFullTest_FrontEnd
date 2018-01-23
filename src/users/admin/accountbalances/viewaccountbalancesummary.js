@@ -97,6 +97,9 @@ export class ViewAccountBalanceSummary {
                 if (data.length == 0) { // if no account balances for that period
                     this.active = false;  // hide the activity indicator
                     alert("No account balances are available for this time period");
+                } else if (data.Message) {
+                    this.active = false;  // hide the activity indicator
+                    alert(data.Message);
                 } else { // if balances exists
                     this.active = false;  // hide the activity indicator
 

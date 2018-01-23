@@ -60,7 +60,6 @@
     "karma-jasmine": "^1.0.2",
     "karma-sourcemap-loader": "^0.3.7",
     "minimatch": "^3.0.2",
-    "nock": "^9.1.6",
     "through2": "^2.0.1",
     "uglify-js": "^3.0.19",
     "vinyl-fs": "^2.4.3"

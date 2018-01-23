@@ -65,7 +65,11 @@ export class UploadAccountBalance {
                 .then(response => response.json())
                 .then(data => {
                     this.active = false;  // hide activity indicator                 
-                    alert(data);   // show the error or the sucess message
+                    if (data.Message) {
+                        alert(data.Message);
+                    } else {
+                        alert(data);
+                    }
                     this.router.navigate('admindashboard/uploadaccountbalance'); // navigate to the same page                                                                    
                 });
         }

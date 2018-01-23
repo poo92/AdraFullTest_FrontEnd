@@ -60,10 +60,16 @@ export class AddUser {
             alert(errorOne);    // show only the first error
           } else { // if user added successfully
             this.active = false;  // hide the activity indicator
-            alert(data);
+           if(data.Message){
+            alert(data.Message);
+           }else{
+            alert(data);             
+           }            
             this.router.navigate('admindashboard'); // navigate to admindashboard
           }
-        });
+        }).catch(function(error) {
+          console.log();
+      });
     }
   }
 }

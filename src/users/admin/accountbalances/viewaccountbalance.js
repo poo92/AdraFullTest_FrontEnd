@@ -69,9 +69,14 @@ export class ViewAccountBalance {
             this.router.navigate('admindashboard/viewaccountbalance'); // navigate to same page
           } else {  // if no record for the month is in the db
             this.active = false; // hide the activity indicator
-            this.accountBalance = data; // set account balance data fron response
-            this.accountBalance.month = this.monthsArray[data.month - 1]; // get the month according to month id
-            this.showmodal = true; // show the result panel
+            if (data.Message) {
+              alert(data.Message);
+            } else {
+              this.accountBalance = data; // set account balance data fron response
+              this.accountBalance.month = this.monthsArray[data.month - 1]; // get the month according to month id
+              this.showmodal = true; // show the result panel        
+            }
+
           }
         });
     }
