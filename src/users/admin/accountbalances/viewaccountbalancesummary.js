@@ -129,17 +129,14 @@ export class ViewAccountBalanceSummary {
                         title: {
                             text: 'Account balance summary'
                         },
-
                         subtitle: {
                             text: 'From ' + month[0] + ' ' + year[0] + ' To ' + month[month.length - 1] + '  ' + year[year.length - 1] + ''
                         },
-
                         yAxis: {
                             title: {
                                 text: 'Amount'
                             }
                         },
-
                         xAxis: {
                             title: {
                                 text: 'Time Period'
@@ -167,7 +164,6 @@ export class ViewAccountBalanceSummary {
                             name: 'Parking Fines',
                             data: parking
                         }],
-
                         responsive: {
                             rules: [{
                                 condition: {
