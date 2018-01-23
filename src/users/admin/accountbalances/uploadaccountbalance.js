@@ -4,10 +4,9 @@ import { HttpClient, json } from 'aurelia-fetch-client';
 import * as URLCONFIG from '../../../custom/urlconfig';
 
 let httpClient = new HttpClient();
-export class UploadAccountBalance {
-    // injecting the router
-    static inject() { return [Router]; }
 
+@inject(Router)
+export class UploadAccountBalance {
     constructor(router) {
         this.router = router;
         this.filecontent = "";

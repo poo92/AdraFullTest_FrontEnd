@@ -3,10 +3,9 @@ import { Router } from 'aurelia-router';
 import { HttpClient, json } from 'aurelia-fetch-client';
 
 let httpClient = new HttpClient();
-export class AdminDashboard {
-  // injecting the router
-  static inject() { return [Router]; }
 
+@inject(Router)
+export class AdminDashboard {
   constructor(router) {
     this.router = router;
   }

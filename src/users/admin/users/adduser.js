@@ -4,10 +4,8 @@ import { HttpClient, json } from 'aurelia-fetch-client';
 import * as URLCONFIG from '../../../custom/urlconfig';
 
 let httpClient = new HttpClient();
+@inject(Router)
 export class AddUser {
-  // injecting the router
-  static inject() { return [Router]; }
-
   constructor(router) {
     this.router = router;
     this.active = false;   //for activity indicator    
@@ -60,16 +58,16 @@ export class AddUser {
             alert(errorOne);    // show only the first error
           } else { // if user added successfully
             this.active = false;  // hide the activity indicator
-           if(data.Message){
-            alert(data.Message);
-           }else{
-            alert(data);             
-           }            
+            if (data.Message) {
+              alert(data.Message);
+            } else {
+              alert(data);
+            }
             this.router.navigate('admindashboard'); // navigate to admindashboard
           }
-        }).catch(function(error) {
+        }).catch(function (error) {
           console.log();
-      });
+        });
     }
   }
 }

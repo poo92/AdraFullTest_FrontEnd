@@ -4,10 +4,9 @@ import { HttpClient, json } from 'aurelia-fetch-client';
 import * as URLCONFIG from '../../../custom/urlconfig';
 
 let httpClient = new HttpClient();
-export class ViewAccountBalance {
-  // injecting the router
-  static inject() { return [Router]; }
 
+@inject(Router)
+export class ViewAccountBalance {
   constructor(router) {
     this.router = router;
     this.year = 2017;

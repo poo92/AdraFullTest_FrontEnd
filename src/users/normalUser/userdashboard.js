@@ -4,10 +4,9 @@ import { HttpClient, json } from 'aurelia-fetch-client';
 import * as URLCONFIG from '../../custom/urlconfig';
 
 let httpClient = new HttpClient();
-export class UserDashboard {
-    // injecting the router
-    static inject() { return [Router]; }
 
+@inject(Router)
+export class UserDashboard {
     constructor(router) {
         this.router = router;
         this.year = 2017;
@@ -23,7 +22,7 @@ export class UserDashboard {
             this.router.navigate('admindashboard');
         }
     }
-    view() {         
+    view() {
         if (typeof (this.accountType) == 'undefined') { // if account type is not selected
             alert("Please select an account type.");
         } else {

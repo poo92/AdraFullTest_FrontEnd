@@ -6,10 +6,9 @@ import Hightcharts from "highcharts";
 import * as URLCONFIG from '../../../custom/urlconfig';
 
 let httpClient = new HttpClient();
-export class ViewAccountBalanceSummary {
-    // injecting the router
-    static inject() { return [Router]; }
 
+@inject(Router)
+export class ViewAccountBalanceSummary {
     constructor(router) {
         this.router = router;
         this.startYear = 2017;
