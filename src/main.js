@@ -4,7 +4,13 @@ export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
     .feature('resources')
-    
+    .defaultBindingLanguage()
+    .defaultResources()
+    .developmentLogging()
+    .router()
+    .history()
+    .eventAggregator()
+
 
   if (environment.debug) {
     aurelia.use.developmentLogging();
