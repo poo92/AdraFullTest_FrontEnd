@@ -40,15 +40,14 @@ export class UploadAccountBalance {
     }
 
     // method to upload the balances
-    upload() {
-        console.log(this.year);
+    upload() {       
         var authorize = 'Bearer ' + sessionStorage.getItem('accessToken');       // set the access token to the header
         if (this.year == '') { // if year is not selected
             alert("Please select a year");
         } else if (this.year.length < 4) {
             alert("Please enter a valid  year");
         } else if (this.filecontent == "") { // if file is not selected
-            alert("please select a file to upload");
+            alert("Please select a file to upload");
         } else {
             this.active = true; // show activity indicator
             var userRequest = { "year": this.year, "fileContent": this.filecontent };   // requsest body

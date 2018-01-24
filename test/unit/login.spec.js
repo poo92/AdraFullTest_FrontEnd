@@ -27,12 +27,12 @@ describe('the login test suit', function () {
         expect(window.alert).toHaveBeenCalledWith('Please enter a password.');     
     });
 
-    it('login : username and password defined, invalid login', function () {
-        this.Login.username = "admin@gmail.com";
-        this.Login.password = "user@123";        
-        this.Login.login();
-        expect(this.Login.active).toBe(false);        
-        expect(window.alert).toHaveBeenCalledWith("The user name or password is incorrect.");     
-    });
+    // it('login : username and password defined, invalid login', function () {
+    //     this.Login.username = "admin@gmail.com";
+    //     this.Login.password = "user@123";        
+    //     this.Login.login();
+    //     expect(this.Login.active).toBe(false);        
+    //     expect(window.alert).toHaveBeenCalledWith("The user name or password is incorrect.");     
+    // });
 
 });

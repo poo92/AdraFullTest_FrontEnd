@@ -2,6 +2,7 @@ import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { HttpClient, json } from 'aurelia-fetch-client';
 import * as URLCONFIG from '../../../custom/urlconfig';
+import * as CONSTANTS from '../../../custom/constants';
 
 let httpClient = new HttpClient();
 
@@ -12,7 +13,7 @@ export class ViewAccountBalance {
     this.year = 2017;
     this.showmodal = false; // hide result panel
     this.accountBalance = null;
-    this.monthsArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    this.monthsArray = CONSTANTS.MONTHS_ARRAY;
     this.active = false; //for activity indicator
   }
 
@@ -24,20 +25,7 @@ export class ViewAccountBalance {
   }
 
   // to get the name of the month
-  months = [
-    { id: 1, name: 'January' },
-    { id: 2, name: 'February' },
-    { id: 3, name: 'March' },
-    { id: 4, name: 'April' },
-    { id: 5, name: 'May' },
-    { id: 6, name: 'June' },
-    { id: 7, name: 'July' },
-    { id: 8, name: 'August' },
-    { id: 9, name: 'September' },
-    { id: 10, name: 'October' },
-    { id: 11, name: 'November' },
-    { id: 12, name: 'December' },
-  ];
+  months = CONSTANTS.MONTHS;
 
   view() {
     if (this.year == '') { // if year is not selected
